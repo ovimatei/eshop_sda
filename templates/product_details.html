@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Product Detail</h1>
+    <div class="container">
+        <div class="row">
+            <div class="card mb-3">
+                <img src="{{picture}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ name }}</h5>
+                    <h5 class="card-title">{{ price }} RON</h5>
+                    <p class="card-text">{{ description }}</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

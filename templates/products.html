@@ -1,5 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Products List</h1>
+    <h1>Products List</h1>
+
+    <div class="container">
+        <div class="row">
+            {% for product in products %}
+                <div class="col-sm">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ product.picture }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title" style="display: inline-block">{{ product.name }}</h5>
+                            <h5 style="display: inline;">{{ product.price }} RON</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <a href="/products/{{ product.id }}" class="btn btn-primary">Detalii</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
 {% endblock %}
