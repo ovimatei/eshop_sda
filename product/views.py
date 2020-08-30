@@ -4,7 +4,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.urls import resolve
 
-from product.models import Product
+from product.models import Product, ProductImage
 
 
 def list_products(request):
@@ -37,7 +37,9 @@ def product_details(request, id_):
         context['name'] = products[0].name
         context['description'] = products[0].description
         context['price'] = products[0].price
-        context['picture'] = products[0].picture
+        product_images = ProductImage.objects.filter(selected_product=id_)
+        first_image_url = product_images[0].url
+        context['image'] = first_image_url
     else:
         return HttpResponse('Product not found')
 
