@@ -1,1 +1,2 @@
-# eshop_sda
+# Eshop project
+## SDA group 2
