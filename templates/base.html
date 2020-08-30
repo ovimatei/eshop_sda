@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+
+<body>
+{% block nav %}
+    <nav>
+        <a href="{% url 'home' %}" class="menu-item">Home</a>
+        <a href="{% url 'list_products' %}" class="menu-item">Products</a>
+        <a href="{% url 'about' %}" class="menu-item">About</a>
+    </nav>
+{% endblock %}
+{% block content %}
+
+
+{% endblock %}
+
+</body>
+</html>
