@@ -8,12 +8,24 @@ from product.models import Product, ProductImage
 
 
 def list_products(request):
+    placeholder_picture = 'https://thumbs.dreamstime.com/b/no-thumbnail-image-placeholder-forums-blogs-websites-148010362.jpg'
     current_url = resolve(request.path_info).url_name
     all_products = Product.objects.all()
+    all_product_images = []
+    for product in all_products:
+        product_images = ProductImage.objects.filter(selected_product=product.id)
+        if len(product_images) > 0:
+            first_image_url = product_images[0].url
+            all_product_images.append(first_image_url)
+        else:
+            all_product_images.append(placeholder_picture)
+
     context = {
         "products": all_products,
         "current_url": current_url,
+        'images': all_product_images,
     }
+
     return render(request, 'products.html', context)
 
 
@@ -38,8 +50,9 @@ def product_details(request, id_):
         context['description'] = products[0].description
         context['price'] = products[0].price
         product_images = ProductImage.objects.filter(selected_product=id_)
-        first_image_url = product_images[0].url
-        context['image'] = first_image_url
+        if len(product_images) > 0:
+            context['images'] = product_images
+
     else:
         return HttpResponse('Product not found')
 

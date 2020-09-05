@@ -5,7 +5,27 @@
     <div class="container">
         <div class="row">
             <div class="card mb-3">
-                <img src="{{image}}" class="card-img-top" alt="...">
+                <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            {% for image in images %}
+                {% if forloop.counter0 == 0 %}
+                    <div class="carousel-item active" data-interval="2000">
+                {% else %}
+                    <div class="carousel-item" data-interval="2000">
+                {% endif %}
+            <img src="{{ image.url }}" class="d-block w-100" alt="...">
+            </div>
+            {% endfor %}
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
                 <div class="card-body">
                     <h5 class="card-title">{{ name }}</h5>
                     <h5 class="card-title">{{ price }} RON</h5>
@@ -15,5 +35,6 @@
             </div>
         </div>
     </div>
+
 
 {% endblock %}

@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load index %}
+{{ images|index:x }}
 
 {% block content %}
     <h1>Products List</h1>
@@ -8,7 +10,7 @@
             {% for product in products %}
                 <div class="col-sm">
                     <div class="card" style="width: 18rem;">
-                        <img src="{{ product.picture }}" class="card-img-top" alt="...">
+                        <img src="{{ images|index:forloop.counter0  }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title" style="display: inline-block">{{ product.name }}</h5>
                             <h5 style="display: inline;">{{ product.price }} RON</h5>
